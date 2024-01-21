@@ -1,0 +1,154 @@
+<!--
+    Copyright © 2022  prasenjit
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.prasenjit.generatejwtusingjava.web</groupId>
+	<artifactId>jwtjavawebapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>jwtjavawebapp</name>
+
+	<properties>
+		<moduleName>jwtjavawebapp</moduleName>
+		<jersey.version>3.0.11</jersey.version>
+		<jakarta.servlet-api>5.0.0</jakarta.servlet-api>
+		<jakarta.mail-impl.version>2.0.1</jakarta.mail-impl.version>
+		<jakartaee-web-api.version>9.1.0</jakartaee-web-api.version>
+		<jakartaee-api.version>9.1.0</jakartaee-api.version>
+		<jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
+		<jakarta.xml.ws-api.version>4.0.0</jakarta.xml.ws-api.version>
+		<jakarta.jws-api.version>3.0.0</jakarta.jws-api.version>
+		<jakarta.swagger-jaxrs2.version>2.2.15</jakarta.swagger-jaxrs2.version>
+		<fasterxml.jackson.version>2.15.2</fasterxml.jackson.version>
+		<maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+		<maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+		<maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
+		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+		<dependency-check-maven.version>6.5.0</dependency-check-maven.version>
+		<maven-ejb-plugin.version>3.2.1</maven-ejb-plugin.version>
+		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+	</properties>
+	
+	<dependencies>
+
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<scope>compile</scope>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<scope>compile</scope>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<scope>compile</scope>
+			<version>0.11.5</version>
+		</dependency>
+
+
+
+		<!-- RESTful web service: Jersey -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-servlet-core</artifactId>
+			<version>${jersey.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jersey.inject</groupId>
+		    <artifactId>jersey-hk2</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jersey.media</groupId>
+		    <artifactId>jersey-media-json-jackson</artifactId>
+		    <version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.swagger.core.v3</groupId>
+    		<artifactId>swagger-annotations-jakarta</artifactId>
+		    <version>${jakarta.swagger-jaxrs2.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>io.swagger.core.v3</groupId>
+    	  <artifactId>swagger-jaxrs2-jakarta</artifactId>
+		  <version>${jakarta.swagger-jaxrs2.version}</version>
+		  <scope>provided</scope>
+		</dependency>
+		<dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+		    <artifactId>jackson-jaxrs-json-provider</artifactId>
+		    <version>${fasterxml.jackson.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${fasterxml.jackson.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>${fasterxml.jackson.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+				<configuration>
+					<source>16</source>
+					<target>16</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
